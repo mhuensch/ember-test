@@ -1,0 +1,37 @@
+ {
+	"draw_white_space": "all"
+	,"folders":[
+		{
+			"path": "."
+			,"folder_exclude_patterns": [
+				"tmp"
+				,"cache"
+				,"bower_components"
+				,"node_modules"
+				,"coverage"
+				,"*coverdata"
+			]
+			,"file_exclude_patterns": [
+				"*coverrun"
+			]
+		}
+	]
+	,"settings": {
+		"draw_white_space": "all"
+		,"translate_tabs_to_spaces": false
+		,"detect_indentation": false
+		,"word_wrap": false
+		,"rulers": [120]
+		,"todoreview": {
+			"exclude_folders": [
+				"*bin*"
+				,"*cache*"
+				,"*dist*"
+				,"*bower_components*"
+				,"*node_modules*"
+				,"*coverage*"
+				,"*coverdata*"
+			]
+		}
+	}
+}
