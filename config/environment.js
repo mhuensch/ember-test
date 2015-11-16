@@ -18,6 +18,13 @@ module.exports = function(environment) {
 			// Here you can pass flags/options to your application instance
 			// when it is created
 		}
+		,contentSecurityPolicy: {
+			// Add policy to allow live reload
+			'style-src': "'self' 'unsafe-inline'",
+			'script-src': "'self' 'unsafe-eval' 192.168.99.100:49152",
+			'connect-src': "'self' ws://192.168.99.100:49152"
+		},
+
 	};
 
 	if (environment === 'development') {
