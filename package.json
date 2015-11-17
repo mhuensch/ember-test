@@ -45,6 +45,7 @@
     "morgan": "^1.6.1"
   },
   "dependencies": {
+    "body-parser": "^1.14.1",
     "http-proxy": "^1.11.1"
   }
 }

@@ -1,5 +1,9 @@
 {{outlet}}
 
 {{#each model as |bar|}}
-	<div>{{bar.name}}</div>
+	<div>
+		{{#link-to 'bar' bar}}
+			{{bar.name}}
+		{{/link-to}}
+	</div>
 {{/each}}

@@ -9,7 +9,8 @@ Router.map(function() {
   this.route('cheese');
   this.route('mine');
   this.route('foo');
-  this.route('bars');
+  this.resource('bars');
+  this.resource('bar', { path: '/bars/:id' });
   this.route('foobar');
   this.route('blah');
 });
