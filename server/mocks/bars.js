@@ -3,12 +3,16 @@ module.exports = function(app) {
 	var barRouter = express.Router();
 
 	barRouter.get('/', function(req, res) {
-		res.send({
-			'bar': {
+		res.send([
+			{
 				id: 1
 				,name: 'barbell'
 			}
-		});
+			,{
+				id: 2
+				,name: 'barmaid'
+			}
+		]);
 	});
 
 	barRouter.post('/', function(req, res) {
@@ -35,5 +39,5 @@ module.exports = function(app) {
 		res.status(204).end();
 	});
 
-	app.use('/api/bar', barRouter);
+	app.use('/api/bars', barRouter);
 };

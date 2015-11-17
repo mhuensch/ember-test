@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('cheese');
   this.route('mine');
   this.route('foo');
-  this.route('bar');
+  this.route('bars');
   this.route('foobar');
   this.route('blah');
 });

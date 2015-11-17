@@ -2,8 +2,6 @@
 
 module.exports = function(environment) {
 
-	console.log('Environment is:', environment);
-
 	var ENV = {
 		modulePrefix: 'ember-test',
 		environment: environment,

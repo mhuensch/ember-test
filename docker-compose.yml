@@ -2,7 +2,7 @@ server:
   image: danlynn/ember-cli:0.2.3
   volumes:
     - .:/myapp
-  command: server --watcher polling --environment="production"
+  command: server --watcher polling
   ports:
     - "4200:4200"
     - "49152:49152"
