@@ -6,6 +6,7 @@
 		"$",
 		"jQuery"
 	],
+	"laxcomma": true,
 	"browser": true,
 	"boss": true,
 	"curly": true,

@@ -22,7 +22,7 @@ if (!Array.prototype.findIndex) {
 }
 
 
-module.exports = function(app) {
+module.exports = function() {
 	var express = require('express');
 	var barsRouter = express.Router();
 	var bars = [
@@ -35,6 +35,20 @@ module.exports = function(app) {
 			,name: 'barmaid'
 		}
 	];
+
+	barsRouter.get('/reset/', function(req, res) {
+		bars = [
+			{
+				id: 1
+				,name: 'barbell'
+			}
+			,{
+				id: 2
+				,name: 'barmaid'
+			}
+		];
+		res.send(bars);
+	});
 
 	barsRouter.get('/', function(req, res) {
 		res.send(bars);
@@ -67,5 +81,5 @@ module.exports = function(app) {
 		res.status(204).end();
 	});
 
-	app.use('/api/bars', barsRouter);
+	return barsRouter;
 };
