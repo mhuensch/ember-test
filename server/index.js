@@ -12,32 +12,52 @@ module.exports = function(app) {
 	var globSync = require('glob').sync;
 
 	// Log proxy requests
-	var morgan  = require('morgan');
+	var morgan = require('morgan');
 	app.use(morgan('dev'));
 
+
+	// Set request body parsing to json
 	var bodyParser = require('body-parser');
 	app.use(bodyParser.json());
 
-	// Build root api that lists all mocks
-	var mocks = globSync('./mocks/**/*.js', { cwd: __dirname });
-	var root = '/api/';
+
+	// Build root api that lists all api routes
+	var routers = globSync('./mocks/**/*-router.js', { cwd: __dirname });
+	var root = '/v1/api/';
 	app.get(root, function(req, res) {
-		res.send(mocks.map(function(mock){
-			return getMockName(mock);
+		res.send(routers.map(function(router){
+			return getRouteName(router);
 		}));
-	})
-
-
-	// Load each mock into the api
-	mocks.forEach(function(mock) {
-		app.use(path.join(root, getMockName(mock)), require(mock)());
 	});
 
 
+	// Load each mock into the api
+	var apis = [];
+	routers.forEach(function(router) {
+		var name = getRouteName(router);
+		var api = require(router);
+		api.raw = require(router.replace('-router.js', '-data.js'));
+		api.data = api.raw.slice();
+		api.reset = function() {
+			this.data = this.raw.slice();
+		}
+		apis.push(api);
+
+		app.use(path.join(root, name), api);
+	});
+
+
+	// Define a global reset for UI development and testing
+	app.get(path.join(root, 'reset'), function(req, res) {
+		apis.forEach(function(api){
+			api.reset();
+		});
+		res.status(201).end();
+	})
 
 };
 
-function getMockName(filePath) {
-	var result = path.basename(filePath, path.extname(filePath));
+function getRouteName(filePath) {
+	var result = path.basename(filePath, path.extname(filePath)).replace('-router', '');
 	return result;
 }

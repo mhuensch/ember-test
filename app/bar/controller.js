@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 			var self = this;
 
 			$.ajax({
-				url: "/api/bars/" + this.model.id,
+				url: "/api/v1/bars/" + this.model.id,
 				type: "DELETE",
 			}).then(function() {
 				self.transitionToRoute('bars');
@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 
 			this.get('model').id = 10;
 			$.ajax({
-				url: "/api/bars",
+				url: "/api/v1/bars",
 				type: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(self.get('model'))
@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
 
 			Ember.set(this.get('model'), 'name', 'batman');
 			$.ajax({
-				url: "/api/bars/" + self.model.id,
+				url: "/api/v1/bars/" + self.model.id,
 				type: "POST",
 				contentType: "application/json",
 				data: JSON.stringify(self.get('model'))
