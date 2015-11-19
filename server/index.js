@@ -23,7 +23,7 @@ module.exports = function(app) {
 
 	// Build root api that lists all api routes
 	var routers = globSync('./mocks/**/*-router.js', { cwd: __dirname });
-	var root = '/v1/api/';
+	var root = '/api/v1/';
 	app.get(root, function(req, res) {
 		res.send(routers.map(function(router){
 			return getRouteName(router);
