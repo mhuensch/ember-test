@@ -1,9 +1,10 @@
 import Ember from 'ember';
-//import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
 
-import ModeResolver from './addons/resolvers/mode';
+
+//import Resolver from 'ember/resolver';
+import Resolver from './addons/resolvers/super';
 
 var App;
 
@@ -12,7 +13,7 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 App = Ember.Application.extend({
 	modulePrefix: config.modulePrefix,
 	podModulePrefix: config.podModulePrefix,
-	Resolver: ModeResolver
+	Resolver: Resolver
 });
 
 loadInitializers(App, config.modulePrefix);

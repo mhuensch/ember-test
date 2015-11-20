@@ -6,6 +6,7 @@ module.exports = function(environment) {
 		modulePrefix: 'ember-test',
 		environment: environment,
 		baseURL: '/',
+		apiURL: '/api/v1/',
 		locationType: 'auto',
 		EmberENV: {
 			FEATURES: {

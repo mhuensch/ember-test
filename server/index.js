@@ -48,7 +48,7 @@ module.exports = function(app) {
 
 
 	// Define a global reset for UI development and testing
-	app.get(path.join(root, 'reset'), function(req, res) {
+	app.post(path.join(root, 'reset'), function(req, res) {
 		apis.forEach(function(api){
 			api.reset();
 		});

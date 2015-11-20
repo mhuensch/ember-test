@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Route.extend({
 	model: function(params) {
 		return $.ajax({
-			url: "/api/v1/bars/" + params.id
+			url: config.apiURL + 'bars/' + params.id
 		});
 	}
 });

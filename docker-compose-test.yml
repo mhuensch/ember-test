@@ -1,7 +1,0 @@
-server:
-  image: danlynn/ember-cli:0.2.3
-  volumes:
-    - .:/myapp
-  command: test --server --watcher polling
-  ports:
-    - "7357:7357"

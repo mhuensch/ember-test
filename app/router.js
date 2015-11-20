@@ -6,10 +6,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-	this.route('foo');
+	//this.route('foo');
+	this.resource('foo', { path: '/foo/:id' });
 	this.resource('bars');
 	this.resource('bar', { path: '/bars/:id' });
-	this.route('foobar');
 });
 
 export default Router;
