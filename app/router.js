@@ -10,6 +10,7 @@ Router.map(function() {
   this.resource('foo', { path: '/foo/:id' });
   this.resource('bars');
   this.resource('bar', { path: '/bars/:id' });
+  this.route('foos');
 });
 
 export default Router;
