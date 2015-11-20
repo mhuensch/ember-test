@@ -6,8 +6,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
-	var result = router.data.filter(function(item) {
-		return item.id === parseInt(req.params.id);
+	var result = router.data.filter(function(bar) {
+		return bar.id === parseInt(req.params.id);
 	});
 	res.send(result[0]);
 });
@@ -26,8 +26,8 @@ router.post('/:id', function(req, res) {
 });
 
 router.delete('/:id', function(req, res) {
-	router.data = router.data.filter(function(item) {
-		return item.id !== parseInt(req.params.id);
+	router.data = router.data.filter(function(bar) {
+		return bar.id !== parseInt(req.params.id);
 	});
 	res.status(204).end();
 });
