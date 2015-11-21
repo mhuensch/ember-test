@@ -1,1 +1,9 @@
 {{outlet}}
+
+{{#each model as |foo|}}
+	<div>
+		{{#link-to 'foo' foo}}
+			{{foo.name}}
+		{{/link-to}}
+	</div>
+{{/each}}

@@ -1,10 +1,10 @@
 module.exports = [
 	{
 		id: 1
-		,name: 'barbell'
+		,name: 'kung-fu'
 	}
 	,{
 		id: 2
-		,name: 'barmaid'
+		,name: 'tofu'
 	}
 ];

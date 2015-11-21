@@ -12,10 +12,10 @@ module('Acceptance | foo', {
 	}
 });
 
-test('visiting /foo/1', function(assert) {
-	visit('/foo/1');
+test('visiting /foos/1', function(assert) {
+	visit('/foos/1');
 
 	andThen(function() {
-		assert.equal(currentURL(), '/foo/1');
+		assert.equal(currentURL(), '/foos/1');
 	});
 });

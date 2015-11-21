@@ -1,10 +1,7 @@
 import Ember from 'ember';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
-
-
-//import Resolver from 'ember/resolver';
-import Resolver from './addons/resolvers/super';
+import Resolver from 'ember/resolver';
 
 var App;
 
