@@ -3,8 +3,6 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
 	model: function(params) {
-		return $.ajax({
-			url: config.apiURL + 'foos/' + params.id
-		});
+		return $.get(config.apiURL + 'foos/' + params.id);
 	}
 });

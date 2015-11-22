@@ -1,6 +1,6 @@
 {
-	"name": "ember-test",
-	"dependencies": {
+  "name": "ember-test",
+  "dependencies": {
 		"ember": "1.13.7",
 		"ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
 		"ember-cli-test-loader": "ember-cli-test-loader#0.1.3",
@@ -12,5 +12,5 @@
 		"jquery": "1.11.3",
 		"loader.js": "ember-cli/loader.js#3.2.1",
 		"qunit": "1.18.0"
-	}
+  }
 }

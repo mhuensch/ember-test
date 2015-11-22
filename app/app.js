@@ -15,4 +15,22 @@ App = Ember.Application.extend({
 
 loadInitializers(App, config.modulePrefix);
 
+$.post = function(url, model) {
+	return $.ajax({
+		url: url,
+		type: "POST",
+		contentType: "application/json",
+		data: JSON.stringify(model)
+	});
+};
+
+$.delete = function(url, model){
+	return $.ajax({
+		url: url,
+		type: 'DELETE',
+		data: JSON.stringify(model),
+		contentType: "application/json"
+	});
+};
+
 export default App;
