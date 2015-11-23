@@ -9,7 +9,8 @@
 		"andThen",
 		"currentURL",
 		"find",
-		"click"
+		"click",
+		"Ember"
 	],
 	"laxcomma": true,
 	"browser": true,

@@ -1,9 +1,11 @@
 {{outlet}}
 
+<ul class="bar-list">
 {{#each model as |bar|}}
-	<div>
-		{{#link-to 'bar' bar}}
+	<li class="bar-list-item">
+		{{#link-to 'bar' bar class="bar-list-item-name"}}
 			{{bar.name}}
 		{{/link-to}}
-	</div>
+	</li>
 {{/each}}
+</ul>

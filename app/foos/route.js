@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import config from '../config/environment';
+import api from '../api';
 
 export default Ember.Route.extend({
 	model: function() {
-		return $.get(config.apiURL + "foos");
+		return api.get("foos");
 	}
 });
