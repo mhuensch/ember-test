@@ -2,27 +2,27 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	actions: {
-		delete: function() {
+		delete: function(bar) {
 			var self = this;
-			$.delete("/api/v1/bars/" + this.model.id)
+			$.delete("/api/v1/bars/" + bar.id)
 				.then(function() {
 					self.transitionToRoute('bars');
 				});
 		}
-		,save: function() {
+		,save: function(bar) {
 			var self = this;
 
-			this.get('model').id = 10;
-			$.post('/api/v1/bars', self.get('model'))
+			bar.id = 10;
+			$.post('/api/v1/bars', bar)
 				.then(function() {
 					self.transitionToRoute('bars');
 				});
 		}
-		,save2: function() {
+		,save2: function(bar) {
 			var self = this;
 
-			Ember.set(this.get('model'), 'name', 'batman');
-			$.post("/api/v1/bars/" + self.model.id, self.get('model'))
+			Ember.set(bar, 'name', 'batman');
+			$.post("/api/v1/bars/" + bar.id, bar)
 				.then(function() {
 					self.transitionToRoute('bars');
 				});

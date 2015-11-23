@@ -7,7 +7,9 @@
 		"jQuery",
 		"visit",
 		"andThen",
-		"currentURL"
+		"currentURL",
+		"find",
+		"click"
 	],
 	"laxcomma": true,
 	"browser": true,

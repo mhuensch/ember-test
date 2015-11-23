@@ -1,9 +1,11 @@
 {{outlet}}
 
+<ul class="foo-list">
 {{#each model as |foo|}}
-	<div>
-		{{#link-to 'foo' foo}}
+	<li class="foo-list-item">
+		{{#link-to 'foo' foo class="foo-list-item-name"}}
 			{{foo.name}}
 		{{/link-to}}
-	</div>
+	</li>
 {{/each}}
+</ul>
