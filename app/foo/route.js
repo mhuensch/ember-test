@@ -22,7 +22,7 @@ export default Ember.Route.extend({
 		,save: function(foo) {
 			var self = this;
 			api.post(foo)
-				.then(function(result) {
+				.then(function() {
 					self.transitionTo('foos');
 					self.send('refresh');
 				});

@@ -2,7 +2,7 @@
 	{{input value=model.name}}
 
 	<div>
-	<button type="submit">Save</button>
-	<button {{action 'delete' model}}>Delete</button>
+	<button type="submit" class="{{unless isDirty "invisible"}}">Save</button>
+	<button {{action 'delete' model}} class="{{unless model.id "invisible"}}">Delete</button>
 	</div>
 </form>
