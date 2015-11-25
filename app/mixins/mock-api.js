@@ -17,10 +17,11 @@ export default Ember.Mixin.create({
 	}
 
 	,get: function(id) {
-		var result = this.data;
+		var result = JSON.parse(JSON.stringify(this.data));
 
 		if (id) {
-			result = result[this._atIndex({id: id})];
+			var index = this._atIndex(parseInt(id));
+			result = result[index];
 		}
 
 		return new Ember.RSVP.Promise(function(resolve) {
@@ -30,18 +31,18 @@ export default Ember.Mixin.create({
 
 	,post:function(model) {
 		if (model.hasOwnProperty('id')) {
-			this._update(model);
+			model = this._update(model);
 		} else {
-			this._create(model);
+			model = this._create(model);
 		}
 
 		return new Ember.RSVP.Promise(function(resolve) {
-			resolve();
+			resolve(model);
 		});
 	}
 
 	,delete: function(model) {
-		this.data.splice(this._atIndex(model), 1);
+		this.data.splice(this._atIndex(model.id), 1);
 
 		return new Ember.RSVP.Promise(function(resolve) {
 			resolve();
@@ -51,17 +52,19 @@ export default Ember.Mixin.create({
 	,_create: function(model) {
 		var newModel = JSON.parse(JSON.stringify(model));
 		newModel.id = this.data.length + 1;
-		this.data[this.data.length] = newModel;
+		this.data.push(newModel);
+		return newModel;
 	}
 
 	,_update: function(model) {
-		this.data[this._atIndex(model)] = model;
+		this.data[this._atIndex(model.id)] = model;
+		return model;
 	}
 
-	,_atIndex: function(model) {
+	,_atIndex: function(id) {
 		return this.data
 			.map(function(item) { return item.id; })
-			.indexOf(model.id);
+			.indexOf(id);
 	}
 
 });
