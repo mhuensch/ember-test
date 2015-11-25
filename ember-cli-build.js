@@ -24,6 +24,10 @@ module.exports = function(defaults) {
 					'app'
 				]
 		},
+		autoprefixer: {
+			browsers: ['last 2 ios version'],
+			cascade: false
+		},
 		trees: {
 			styles: moreStyles
 		}
