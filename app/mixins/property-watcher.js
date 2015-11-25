@@ -1,3 +1,6 @@
+/* exported EXPORTED_LIB */
+/*jshint loopfunc: true */
+
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
@@ -23,6 +26,7 @@ export default Ember.Mixin.create({
 	}
 
 	,propertyChanged: function(model, property, current, previous) {
+		// jshint unused:false
 		// This function is intentionally left empty so that the user can override it.
 	}
 
@@ -31,11 +35,11 @@ export default Ember.Mixin.create({
 		previous = previous || this.get('previous');
 
 		// If objects match exactly, there have been no changes.
-		if (current === previous) return false;
+		if (current === previous) { return false; }
 
 		// If both one of the objects don't have a value, there have been changes
 		// as if they were both null or undefined, they would have matched above.
-		if (!current || !previous) return true;
+		if (!current || !previous) { return true; }
 
 		return JSON.stringify(current) !== JSON.stringify(previous);
 	}
@@ -53,7 +57,7 @@ export default Ember.Mixin.create({
 			return;
 		}
 
-		var model = self.get('watching')
+		var model = self.get('watching');
 		if (!model) {
 			console.log('Not watching model because the model was null.');
 			return;
@@ -63,13 +67,12 @@ export default Ember.Mixin.create({
 		if (model instanceof Array) {
 			items=model;
 		} else if (model instanceof Object) {
-			items.push(model)
+			items.push(model);
 		}
 
 		for(var i=0; i<items.length; i++) {
-			var self = this;
-
 			properties.forEach(function (prop) {
+
 				if (prop.indexOf('.@each') === -1) {
 					Ember.addObserver(items[i], prop, self, self.onPropertyChanged);
 				} else {
@@ -77,12 +80,11 @@ export default Ember.Mixin.create({
 
 					if (!items[i][newProp]) {
 						items[i][newProp] = [];
-						console.log('added empty array')
+						console.log('added empty array');
 					}
 
-					items[i][newProp].addArrayObserver(self)
+					items[i][newProp].addArrayObserver(self);
 				}
-
 			});
 		}
 	}.observes('_properties', 'watching')
@@ -110,16 +112,16 @@ export default Ember.Mixin.create({
 		this._super();
 
 		var self = this;
-		var model = self.get('watching')
+		var model = self.get('watching');
 		var properties = self.get('_properties');
 
-		if (!model || !properties) return;
+		if (!model || !properties) { return; }
 
 		var items = [];
 		if (model instanceof Array) {
 			items=model;
 		} else if (model instanceof Object) {
-			items.push(model)
+			items.push(model);
 		}
 
 		for(var i=0; i<items.length; i++) {
