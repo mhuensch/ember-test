@@ -1,56 +1,39 @@
 import config from './config/environment';
+import mockApi from './mixins/mock-api';
 
-var Api = {};
+var Api = Ember.Object.extend({
 
-Api.get = function(url) {
-	return $.get(config.apiURL + url);
-};
+	url: ''
 
-Api.post = function(url, model) {
-	return $.ajax({
-		url: config.apiURL + url,
-		type: "POST",
-		contentType: "application/json",
-		data: JSON.stringify(model)
-	});
-};
+	,data : null
 
-Api.delete = function(url, model){
-	return $.ajax({
-		url: config.apiURL + url,
-		type: 'DELETE',
-		data: JSON.stringify(model),
-		contentType: "application/json"
-	});
-};
-
-
-
-
-if (config.environment === 'development' || config.environment === 'test') {
-	Api._mocks = [];
-	for(var module in window.require.entries) {
-		if (module.length <= 9) { continue; }
-		if (module.indexOf('/mock-api') !== module.length - 9) { continue; }
-		if (module === 'ember-test/mixins/mock-api') { continue; }
-
-		var urlParts = module.split('/');
-		var url = urlParts[urlParts.length-2];
-		Api._mocks[url] = window.require(module).default.create();
+	,get: function(id) {
+		if (!id) { id = ''; }
+		return $.get(config.apiURL + this.url + id);
 	}
 
-	Api.get = function(url) {
-		return Api._mocks[url.split('/')[0]].get(url);
-	};
+	,post: function(model) {
+		return $.ajax({
+			url: config.apiURL + this.url,
+			data: JSON.stringify(model),
+			type: "POST",
+			contentType: "application/json"
+		});
+	}
 
-	Api.post = function(url, model) {
-		return Api._mocks[url.split('/')[0]].post(url, model);
-	};
+	,delete: function(model){
+		return $.ajax({
+			url: config.apiURL + this.url,
+			data: JSON.stringify(model),
+			type: 'DELETE',
+			contentType: "application/json"
+		});
+	}
 
-	Api.delete = function(url, model){
-		return Api._mocks[url.split('/')[0]].delete(url, model);
-	};
+});
+
+if (config.environment === 'development' || config.environment === 'test') {
+	Api = Api.extend(mockApi);
 }
-
 
 export default Api;

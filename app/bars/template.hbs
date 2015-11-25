@@ -1,4 +1,4 @@
-{{outlet}}
+<button {{action 'create'}}>Add</button>
 
 <ul class="bar-list">
 {{#each model as |bar|}}
@@ -9,3 +9,8 @@
 	</li>
 {{/each}}
 </ul>
+
+{{!--
+	This outlet is not needed unless creating a master/detail page
+	{{outlet}}
+--}}

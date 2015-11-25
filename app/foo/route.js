@@ -1,8 +1,10 @@
 import Ember from 'ember';
-import api from '../api';
+import Api from '../api';
+
+var api = Api.create({url: 'foos'});
 
 export default Ember.Route.extend({
 	model: function(params) {
-		return api.get('foos/' + params.id);
+		return api.get(params.id);
 	}
 });

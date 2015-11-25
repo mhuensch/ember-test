@@ -1,11 +1,13 @@
 import Ember from 'ember';
-import api from '../api';
+import Api from '../api';
+
+var api = Api.create({url: 'bars'});
 
 export default Ember.Controller.extend({
 	actions: {
 		delete: function(bar) {
 			var self = this;
-			api.delete("bars/" + bar.id)
+			api.delete(bar)
 				.then(function() {
 					self.transitionToRoute('bars');
 				});
@@ -13,20 +15,7 @@ export default Ember.Controller.extend({
 
 		,save: function(bar) {
 			var self = this;
-
-			var newBar = JSON.parse(JSON.stringify(bar));
-			newBar.id = 10;
-			api.post('bars', newBar)
-				.then(function() {
-					self.transitionToRoute('bars');
-				});
-		}
-
-		,save2: function(bar) {
-			var self = this;
-
-			Ember.set(bar, 'name', 'batman');
-			api.post("bars/" + bar.id, bar)
+			api.post(bar)
 				.then(function() {
 					self.transitionToRoute('bars');
 				});
