@@ -11,8 +11,4 @@ export default Ember.Object.extend(MockApi, {
 			,name: 'barmaid'
 		}
 	]
-
-	// ,get: function(id) {
-	// 	return [];
-	// }
 });

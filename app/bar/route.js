@@ -7,6 +7,9 @@ export default Ember.Route.extend({
 	}
 
 	,model: function(params) {
+		if (params.id === 'new') {
+			return {};
+		}
 		return this.api.get(params.id);
 	}
 
@@ -22,6 +25,11 @@ export default Ember.Route.extend({
 
 		,save: function(bar) {
 			var self = this;
+
+			if (bar.id === 'new') {
+				delete bar.id;
+			}
+
 			self.api.post(bar)
 				.then(function() {
 					self.transitionTo('bars');

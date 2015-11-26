@@ -15,4 +15,10 @@ App = Ember.Application.extend({
 
 loadInitializers(App, config.modulePrefix);
 
+App.IndexRoute = Ember.Route.extend({
+	beforeModel: function() {
+		this.transitionTo('foos');
+	}
+});
+
 export default App;

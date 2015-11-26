@@ -19,10 +19,10 @@ export default Ember.Mixin.create({
 			previous = $.extend(true, {}, model);
 		}
 
+		self.set('_properties', properties);
 		self.set('watching', model);
 		self.set('previous', previous);
 		self.set('isDirty', false);
-		self.set('_properties', properties);
 	}
 
 	,propertyChanged: function(model, property, current, previous) {

@@ -1,8 +1,15 @@
 <h2 id="title">Welcome to FooBar</h2>
-<p>a sample ember app</p>
 
-{{#link-to 'index'}} home {{/link-to}}
-{{#link-to 'bars'}} bars {{/link-to}}
-{{#link-to 'foos'}} foos {{/link-to}}
+<nav class="application-nav">
+	<h1 class="invisible">Main Navigation</h1>
+	<ul class="application-nav-list">
+		<li>{{#link-to 'index'}} home {{/link-to}}</li>
+		<li>{{#link-to 'bars'}} bars {{/link-to}}</li>
+		<li>{{#link-to 'foos'}} foos {{/link-to}}</li>
+	</ul>
+</nav>
 
-{{outlet}}
+<main id="application-content" class="application-content">
+	<p>a sample ember app</p>
+	{{outlet}}
+</main>

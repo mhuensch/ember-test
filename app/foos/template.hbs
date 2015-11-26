@@ -1,5 +1,7 @@
 <button {{action 'create'}}>Add</button>
 
+{{outlet}}
+
 <ul class="foo-list">
 {{#each model as |foo|}}
 	<li class="foo-list-item">
@@ -9,5 +11,3 @@
 	</li>
 {{/each}}
 </ul>
-
-{{outlet}}
