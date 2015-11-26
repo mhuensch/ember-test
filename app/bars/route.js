@@ -1,18 +1,19 @@
 import Ember from 'ember';
 import Api from '../api';
 
-var api = Api.create({url: 'bars'});
-
 export default Ember.Route.extend({
+	init: function() {
+		this.api = Api.create({url: 'bars'});
+	}
 
-	model: function() {
-		return api.get();
+	,model: function() {
+		return this.api.get();
 	}
 
 	,actions: {
 
 		create: function() {
-			this.transitionTo('bar', {});
+			this.transitionTo('bar', {id:'new'});
 		}
 
 	}

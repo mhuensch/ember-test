@@ -5,7 +5,10 @@ export default Ember.Controller.extend(PropertyWatcher, {
 
 	onModelChanged: function() {
 		var model = this.get('model');
-		if (!model) { return; }
+		if (!model) {
+			this.set('model', {});
+			model = this.get('model');
+		}
 
 		// Here we are watching the properties on the object explicitly.
 		// If we wanted notifications per property [propertyChanged(name, current, previous)] or observe isDirty.
@@ -14,6 +17,5 @@ export default Ember.Controller.extend(PropertyWatcher, {
 		]);
 
 	}.observes('model').on('init')
-
 
 });

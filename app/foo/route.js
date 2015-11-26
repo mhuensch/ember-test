@@ -1,18 +1,20 @@
 import Ember from 'ember';
 import Api from '../api';
 
-var api = Api.create({url: 'foos'});
-
 export default Ember.Route.extend({
-	model: function(params) {
-		return api.get(params.id);
+	init: function() {
+		this.api = Api.create({url: 'foos'});
+	}
+
+	,model: function(params) {
+		return this.api.get(params.id);
 	}
 
 	,actions: {
 
 		delete: function(foo) {
 			var self = this;
-			api.delete(foo)
+			self.api.delete(foo)
 				.then(function() {
 					self.transitionTo('foos');
 					self.send('refresh');
@@ -21,7 +23,7 @@ export default Ember.Route.extend({
 
 		,save: function(foo) {
 			var self = this;
-			api.post(foo)
+			self.api.post(foo)
 				.then(function() {
 					self.transitionTo('foos');
 					self.send('refresh');

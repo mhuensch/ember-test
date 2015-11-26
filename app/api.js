@@ -5,8 +5,6 @@ var Api = Ember.Object.extend({
 
 	url: ''
 
-	,data : null
-
 	,get: function(id) {
 		if (!id) { id = ''; }
 		return $.get(config.apiURL + this.url + id);

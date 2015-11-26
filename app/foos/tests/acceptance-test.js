@@ -12,8 +12,8 @@ module('Acceptance | foos', {
 	}
 });
 
-test('visiting /foos', function(assert) {
-	assert.expect(4);
+test('should show a list of foos', function(assert) {
+	assert.expect(3);
 	visit('/foos');
 
 	andThen(function() {
@@ -25,6 +25,11 @@ test('visiting /foos', function(assert) {
 		var foo = find('.foo-list .foo-list-item:eq(0) .foo-list-item-name');
 		assert.equal(foo.text().trim(), 'kung-fu');
 	});
+});
+
+test('should navigate to foo when item is clicked', function(assert) {
+	assert.expect(1);
+	visit('/foos');
 
 	click('.foo-list .foo-list-item:eq(0) .foo-list-item-name');
 	andThen(function() {
